@@ -11,7 +11,7 @@
             "program": "${workspaceFolder}\\Backend\\Home\\manage.py",
             "args": [
                 "runserver",
-                "192.168.0.35:70"
+                "192.168.1.35:70"
             ],
             "django": true
         }
