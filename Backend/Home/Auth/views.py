@@ -8,6 +8,7 @@ from rest_framework.request import Request
 from rest_framework import status
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
 
 # Create your views here.
 
@@ -40,18 +41,21 @@ class SignUpView(generics.GenericAPIView):
 
 
 class LoginView(APIView):
-
     def post(self, request: Request):
         permission_classes = []
         email = request.data.get("email")
         password = request.data.get("password")
 
         user = authenticate(email=email, password=password)
+        refresh = RefreshToken.for_user(user)
 
         if user is not None:
             response = {
                 "message": "Login Sucessfully",
-                "token": user.auth_token.key,
+                "token": {
+                    "refresh": str(refresh),
+                    "access": str(refresh.access_token),
+                },
                 "status": status.HTTP_200_OK,
             }
             return Response(response)
