@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     "Apps",
     "restAPI",
     "Auth",
+    # App inside app configure
+    "Auth.Serializers_Relationship",
+    "Auth.Router",
     # rest_framework third party
     "rest_framework",
 ]
