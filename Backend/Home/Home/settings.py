@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "Auth",
     # rest_framework third party
     "rest_framework",
-    "rest_framework.authtoken",
 ]
 
 
@@ -64,7 +63,7 @@ ROOT_URLCONF = "Home.urls"
 
 # jwt token config
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "SIGNING_KEY": SECRET_KEY,
     "AUTH_HEADER_TYPES": ("Bearer",),
@@ -95,14 +94,11 @@ WSGI_APPLICATION = "Home.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "LearnDRF",
-        "USER": "root",
-        "PASSWORD": "visualapp",
-        "HOST": "localhost",
-        "PORT": "3306",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
 
 REST_FRAMEWORK = {
     "NON_FIELD_ERRORS_KEY": "error",
