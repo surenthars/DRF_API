@@ -6,5 +6,5 @@ urlpatterns = [
     path("", include("Apps.urls")),
     path("api/", include("restAPI.urls")),
     path("Auth/", include("Auth.urls")),
-    path("Posts/", include("Auth.Serializers_Relationship.urls")),
+    path("permisson/", include("Auth.Permissions.urls")),
 ]

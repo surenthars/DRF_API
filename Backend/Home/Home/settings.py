@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "restAPI",
     "Auth",
     # App inside app configure
-    "Auth.Serializers_Relationship",
+    "Auth.Permissions",
     "Auth.Router",
     # rest_framework third party
     "rest_framework",
@@ -64,7 +64,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "Home.urls"
 
-# jwt token config
+# Jwt Authentication Config
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=10),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
@@ -72,6 +72,19 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
+REST_FRAMEWORK = {
+    "NON_FIELD_ERRORS_KEY": "error",
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    "DEFAULT_PERMISSON_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated",
+        "rest_framework.permissions.IsAdminUser",
+        "rest_framework.permissions.AllowAny",
+    ),
+}
 
 TEMPLATES = [
     {
@@ -103,15 +116,6 @@ DATABASES = {
 }
 
 
-REST_FRAMEWORK = {
-    "NON_FIELD_ERRORS_KEY": "error",
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.TokenAuthentication",
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
-    "DEFAULT_PERMISSON_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
-}
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
