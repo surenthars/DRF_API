@@ -7,4 +7,6 @@ urlpatterns = [
     path("api/", include("restAPI.urls")),
     path("Auth/", include("Auth.urls")),
     path("permisson/", include("Auth.Permissions.urls")),
+    path("routers/", include("Auth.Router.urls")),
+    path("filtering/", include("Auth.Filter.urls")),
 ]

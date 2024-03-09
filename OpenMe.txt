@@ -1,0 +1,26 @@
+Router is pending 
+
+re pattern checking 
+
+pdf ,word , xlsx ,text these document related packages need to learn 
+
+
+
+PDF Packages:
+
+PyPDF2.
+PdfMiner.
+Tabula.
+PDFQuery.
+PyMyPDF.
+Pytesseract.
+
+EXcel Packages:
+
+pandas
+XlxlsxWriter
+Openpyxl
+Xlrd
+
+word 
+https://python-docx.readthedocs.io/en/latest/

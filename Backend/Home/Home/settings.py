@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # App inside app configure
     "Auth.Permissions",
     "Auth.Router",
+    "Auth.Filter",
     # rest_framework third party
     "rest_framework",
 ]
